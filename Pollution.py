@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 #import sklearn
 #print('The scikit-learn version is {}.'.format(sklearn.__version__))
+#import os 
+#import json
+
+
+
 
 
 # Importing the dataset
@@ -58,7 +63,7 @@ X=X[:,1:]
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
 
-# Feature Scaling
+'''# Feature Scaling
 from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)                   #Only apply when using PCA
@@ -72,7 +77,7 @@ from sklearn.decomposition import PCA
 pca = PCA(n_components = 13)
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
-explained_variance = pca.explained_variance_ratio_
+explained_variance = pca.explained_variance_ratio_'''
 
 
 
@@ -147,6 +152,23 @@ regressor_opt.fit(X_opt_train, y_opt_train)'''
 
 #predicting new results
 y_opt_pred = regressor_opt.predict(X_opt_test)
+
+
+# Saving model as pickle file
+from sklearn.externals import joblib
+import pickle
+
+lin_reg = pickle.dumps(regressor)
+joblib.dump(lin_reg, 'model.pkl')
+
+
+#joblib.dump(regressor, 'model.pkl')
+#regr=joblib.load('model.pkl')
+
+
+    
+
+
 
 # Applying k-Fold Cross Validation
 from sklearn.model_selection import cross_val_score
