@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-#import sklearn
-#print('The scikit-learn version is {}.'.format(sklearn.__version__))
+import sklearn
+print('The scikit-learn version is {}.'.format(sklearn.__version__))
 #import os 
 #import json
 
@@ -160,6 +160,8 @@ import pickle
 
 lin_reg = pickle.dumps(regressor)
 joblib.dump(lin_reg, 'model.pkl')
+
+
 
 
 #joblib.dump(regressor, 'model.pkl')
